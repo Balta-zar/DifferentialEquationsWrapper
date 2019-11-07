@@ -27,12 +27,9 @@ end
 
 x0 = [] # Array of integers<br/>
 interval = [0, 10] # Start and finish time<br/>
-sol = solveODE(system!, x0, interval, parameters=[])  # tuple of two
-elements<br/>
+sol = solveODE(system!, x0, interval, parameters=[])  # Structure
 
-sol[1] -> Returned from DifferentialEquations module. Great for
-plot(sol[1])<br/>
-sol[2] -> Structure with fields t and x<br/>
-
-sol[2].t -> array of time points that the solution was saved at<br/>
-sol[2].x -> matrix with values of state space in sol[2].t
+sol.t -> array of time points that the solution was saved at<br/>
+sol.x -> matrix with values of state space in sol.t<br/>
+sol.orig -> returned from DifferentialEquations module. Great for
+plot(sol.orig)

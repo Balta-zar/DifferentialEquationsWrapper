@@ -5,6 +5,7 @@ using DifferentialEquations
 struct Solution
     t
     x
+    orig
 end
 
 
@@ -16,12 +17,10 @@ function solveODE(helper_function, initial_conditions, interval, parameters=[])
     prob = ODEProblem(helper_function, initial_conditions, interval, parameters)
     sol = solve(prob)
 
-    plotting_solution = sol
-    analysis_solution = Solution(sol.t, sol[:,:]')
-
-    return (plotting_solution, analysis_solution)
+    solution = Solution(sol.t, sol[:,:]', sol)
+    return solution
 end
 
-export solveDE
+export solveODE
 
 end # module
